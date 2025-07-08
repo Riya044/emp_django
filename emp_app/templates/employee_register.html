@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Vibrant gradient background */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-radius: 1.5rem; /* More rounded corners */
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+            max-width: 90%;
+            width: 450px; /* Fixed width for larger screens */
+            animation: slideIn 0.8s ease-out; /* Slide-in animation */
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .signup-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            opacity: 0.9;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 0.75rem; /* Rounded input fields */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .checkbox-input {
+            margin-right: 0.75rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 0.25rem;
+            accent-color: #FF6F91; /* Custom checkbox color */
+        }
+        .terms-link {
+            color: #FFC72C; /* Highlighted link color */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .terms-link:hover {
+            color: #fff;
+        }
+        .signup-button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #FF6F91 0%, #FF9671 50%, #FFC72C 100%); /* Gradient button */
+            color: #fff;
+            border: none;
+            border-radius: 9999px; /* Pill-shaped button */
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .signup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+        }
+        .signin-link-container {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .signin-link {
+            color: #FFC72C;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .signin-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1 class="signup-heading">Sign Up</h1>
+    
+
+
+        <form>
+            <div class="form-group">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" id="fullName" class="form-input" placeholder="Name...">
+            </div>
+            
+            <div class="form-group">
+                <label for="emp_id" class="form-label">Employee Id</label>
+                <input type="text" id="emp_id" class="form-input" placeholder="emp_id">
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-input" placeholder="********">
+            </div>
+            <div class="form-group">
+                <label for="repeatPassword" class="form-label">Repeat Password</label>
+                <input type="password" id="repeatPassword" class="form-input" placeholder="********">
+            </div>
+            
+            <button type="submit" class="signup-button">Sign Up</button>
+            
+            {% if messages %}
+              {% for message in messages %}
+                <div style="padding: 10px; background-color: lightgreen; margin-bottom: 10px;">
+                    {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+
+            
+            <button type="submit"></button>
+            </form>
+
+        </form>
+    </div>
+</body>
+</html>

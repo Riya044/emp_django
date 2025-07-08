@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome, Admin!</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Subtle gradient background */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff; /* White text for contrast */
+        }
+        .card-container {
+            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-radius: 1.5rem; /* More rounded corners */
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+            text-align: center;
+            max-width: 90%;
+            width: 500px; /* Fixed width for larger screens */
+            animation: fadeIn 1s ease-out; /* Fade-in animation */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .welcome-heading {
+            font-size: 2.5rem; /* Larger heading */
+            font-weight: 700; /* Bolder */
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
+        }
+        .status-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .admin-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #a770ef 0%, #cf8bf3 50%, #fbc2eb 100%); /* Gradient button */
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 9999px; /* Pill-shaped button */
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
+        }
+        .admin-button:hover {
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <h1 class="welcome-heading">Welcome, Admin!</h1>
+        <p class="status-text">You are successfully logged in.</p>
+        <a href="/admin/">Admin Dashboard</a>
+        
+    </div>
+</body>
+</html>

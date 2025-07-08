@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Leave Request{% endblock %}
+
+{% block content %}
+
+
+        
+         <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-7">
+                <div class="card p-4 bg-success-subtle-custom">
+                    <h2 class="text-3xl font-bold mb-4"> Leave Request</h2>
+                    <form method="post" action="{% url 'submit_leave_request' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="submit_leave" value="1">
+
+                    <div class="form-group">
+                        <label for="{{ leave_form.start_date.id_for_label }}">Start date:</label>
+                        {{ leave_form.start_date }}
+                        {% if leave_form.start_date.errors %}
+                            <p class="text-red-600 text-sm mt-1">{{ leave_form.start_date.errors }}</p>
+                        {% endif %}
+                    </div> sub
+
+                    <div class="form-group">
+                        <label for="{{ leave_form.end_date.id_for_label }}">End date:</label>
+                        {{ leave_form.end_date }}
+                        {% if leave_form.end_date.errors %}
+                            <p class="text-red-600 text-sm mt-1">{{ leave_form.end_date.errors }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="{{ leave_form.leave_type.id_for_label }}" class="form-label">{{ leave_form.leave_type.label }}</label>
+                    {{ leave_form.leave_type }}
+                    {% if leave_form.leave_type.errors %}
+                        {% for error in leave_form.leave_type.errors %}
+                            <div class="alert alert-danger mt-1">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                    <button type="submit" class="w-full sm:w-auto">Submit Leave</button>
+                </form>
+            </div>
+                
+        
+        </div>
+        {% endblock %}
+    </div>

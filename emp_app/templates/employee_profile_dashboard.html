@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Employee Dashboard - {{ employee.name }}{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Employee Dashboard</h2>
+
+
+{% if employee %}
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card p-4 h-100 bg-info-subtle-custom">
+            <h4 class="card-title text-center text-primary mb-3">Welcome! {{ employee.name }}</h4>
+            <p class="text-center text-muted mb-4">{{ employee.position }} | {{ employee.employment_type}}</p>
+            <div class="profile-details">
+                <p><strong>Employee ID:</strong> <span class="font-mono">{{ employee.employee_id }}</span></p>
+                    <p><strong>Name:</strong> {{ employee.name}}</p>
+                    <p><strong>Email:</strong> {{ employee.email }}</p>
+                    <p><strong>Phone:</strong> {{ employee.phone }}</p>
+                    <p><strong>gender:</strong> {{ employee.gender }}</p>
+                    <p><strong>Department:</strong> {{ employee.department }}</p>
+                    <p><strong>Position:</strong> {{ employee.position }}</p>
+                    <p><strong>salary:</strong> {{ employee.salary }}</p>
+                    <p><strong>hire_date:</strong> {{ employee.hire_date }}</p>
+                   
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-4 h-100 bg-warning-subtle-custom">
+            <h5 class="card-title text-warning mb-4">Your Leave History</h5>
+            {% if leave_history %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Reason</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Requested At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for leave in leave_history %}
+                        <tr>
+                            <td>{{ leave.start_date|date:"d-m-Y" }}</td>
+                            <td>{{ leave.end_date|date:"d-m-Y" }}</td>
+                            <td>{{ leave.reason|truncatechars:30 }}</td>
+                            <td>
+                                {% if leave.status == 'Approved' %}
+                                    <span class="status-approved">{{ leave.status }}</span>
+                                {% elif leave.status == 'Rejected' %}
+                                    <span class="status-rejected">{{ leave.status }}</span>
+                                {% else %}
+                                    <span class="status-pending">{{ leave.status }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ leave.requested_at|date:"d-m-Y H:i A" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+                <p>No leave requests found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% else %}
+    <p class="text-center">Please use the login page to access your dashboard.</p>
+{% endif %}
+{% endblock %}

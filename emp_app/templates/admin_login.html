@@ -1,0 +1,104 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel Login</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-box {
+            background: linear-gradient(135deg,rgb(60, 94, 182) 0%,rgb(53, 12, 93) 100%);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.05);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .login-box .form-control {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #00ffff;
+            border-radius: 0;
+            color: white;
+        }
+        .login-box .form-control:focus {
+            box-shadow: none;
+            border-color: #00ffff;
+        }
+        .login-box .btn-login {
+            background-color: transparent;
+            color: #00ffff;
+            border: 1px solid #00ffff;
+        }
+        .login-box .btn-login:hover {
+            background-color: #00ffff;
+            color: #0f2c34;
+        }
+        .icon-top {
+            font-size: 40px;
+            color: #00ffff;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .logo {
+            width: 270px; /* increase to desired size */
+            height: 80px;; /* keeps aspect ratio */
+            text-align: center;
+            
+            
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <div class="icon-top"><i class="fas fa-key"></i></div>
+    <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
+    <h2>ADMIN PANEL</h2>
+
+    <form method="POST" action="{% url 'admin_login' %}">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger py-1 my-2">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="mb-3">
+            <label class="form-label small text-uppercase">Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-4">
+            <label class="form-label small text-uppercase">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-login">LOGIN</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
